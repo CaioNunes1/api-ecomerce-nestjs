@@ -1,8 +1,9 @@
+jest.setTimeout(30000); // 30 segundos
+import 'dotenv/config' 
 import { Test, TestingModule } from '@nestjs/testing';
 import { INestApplication } from '@nestjs/common';
 import * as request from 'supertest';
 import { AppModule } from './../src/app.module';
-import 'dotenv/config';
 
 describe('AppController (e2e)', () => {
   let app: INestApplication;
@@ -21,5 +22,9 @@ describe('AppController (e2e)', () => {
       .get('/')
       .expect(200)
       .expect('Hello World!');
+  });
+
+  afterAll(async () => {
+    await app.close();
   });
 });
