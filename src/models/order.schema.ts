@@ -1,8 +1,9 @@
 import * as mongoose from 'mongoose';
 
 export const OrderSchema= new mongoose.Schema({
-    ownser:{
-        type:mongoose.Schema.Types.ObjectId,
+    owner:{
+        type:mongoose.Schema.Types.ObjectId,//indica que o campo owner é um ID de objeto do 
+        //MongoDB. O MongoDB usa ObjectId como identificadores únicos para documentos.
         ref:'User'
     },
     totalPrice:{
@@ -11,7 +12,7 @@ export const OrderSchema= new mongoose.Schema({
     },
     products:[{
         product:{
-            type:mongoose.Schema.Types.ObjectId,
+            type:mongoose.Schema.Types.ObjectId,//basicamente o objectid fala que é um ibjeto
             ref:'Product',
         },
         quantity:{
